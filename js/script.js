@@ -1,5 +1,6 @@
 const idArray = [1];
 let newId;
+const postsContainer = document.getElementById('container');
 
 const posts = [
     // {
@@ -16,10 +17,10 @@ const posts = [
     {
         id: 1,
         content: 'Hanno rubato un tir pieno di lampadine. La polizia brancola nel buio.',
-        media: "https://unsplash.it/600/300?image=171",
+        media: 'https://unsplash.it/600/300?image=171',
         author: {
             name: 'Commisario Rex',
-            image: "https://unsplash.it/300/300?image=15"
+            image: 'https://unsplash.it/300/300?image=15'
         },
         likes: 67,
         created: '2021-05-13'
@@ -27,10 +28,10 @@ const posts = [
     {
         id: 2,
         content: 'Due cose sono infinite: l’universo e la stupidità umana, ma non sono sicuro dell’universo.',
-        media: "https://unsplash.it/600/300?image=151",
+        media: 'https://unsplash.it/600/300?image=151',
         author: {
             name: 'Albert Einstein',
-            image: "https://unsplash.it/300/300?image=14"
+            image: 'https://unsplash.it/300/300?image=14'
         },
         likes: 2,
         created: '2022-01-03'
@@ -38,10 +39,10 @@ const posts = [
     {
         id: 3,
         content: 'La banana alla papaya: “Conosci un buon avocado?”',
-        media: "https://unsplash.it/600/300?image=153",
+        media: '',
         author: {
             name: 'Kevin Minion',
-            image: "https://unsplash.it/300/300?image=111"
+            image: 'https://unsplash.it/300/300?image=111'
         },
         likes: 12,
         created: '2021-04-08'
@@ -49,10 +50,10 @@ const posts = [
     {
         id: 4,
         content: 'Soltanto l’inutilità del primo diluvio trattiene Dio dal mandarne un secondo.',
-        media: "https://unsplash.it/600/300?image=371",
+        media: 'https://unsplash.it/600/300?image=371',
         author: {
             name: 'Sébastien-Roch Nicolas de Chamfort',
-            image: "https://unsplash.it/300/300?image=55"
+            image: 'https://unsplash.it/300/300?image=55'
         },
         likes: 56,
         created: '2022-01-20'
@@ -60,35 +61,13 @@ const posts = [
 ];
 console.log(posts);
 
+// Creo il contenitore del post
 
-/** // Controllo se nell'array c'è già il numero, se c'è, genero un numero incrementato di 1 e lo pusho nell'array degli id
- * Description
- * @param {Number} currentNumber // Numero da controllare
- * @param {Array} numberArray // Array da controllare
- * @returns {Number}   // Numero incrementato di uno a push del nuovo numero nell'array
- */
-function nextNumberPush(currentNumber, numberArray) {
-    if (numberArray.includes(currentNumber)) {
-        currentNumber++;
-        numberArray.push(currentNumber)
-    }
-    return currentNumber
-}
 
-/**
- * Description // Genera un numero random
- * @returns {any}
- */
-function randomNumber() {
-    const newRandomNumber = Math.floor(Math.random() * 100);
-    return newRandomNumber
-}
-
-'ciao'
-
+const divPost = newDomElement('div', 'post', postsContainer);
+console.log(postsContainer);
 
 /*
-
 <div class="post">
     <div class="post__header">
         <div class="post-meta">                    
@@ -119,5 +98,35 @@ function randomNumber() {
         </div> 
     </div>            
 </div>
-
 */
+
+// Creo un elemento nel dom con la sua classe
+function newDomElement(tagName, className, whereAppend) {
+    const newElement = document.createElement(tagName);
+    newElement.classList.add(className);
+    whereAppend.append(newElement)
+    return newElement
+}
+
+/** // Controllo se nell'array c'è già il numero, se c'è, genero un numero incrementato di 1 e lo pusho nell'array degli id
+ * Description
+ * @param {Number} currentNumber // Numero da controllare
+ * @param {Array} numberArray // Array da controllare
+ * @returns {Number}   // Numero incrementato di uno a push del nuovo numero nell'array
+ */
+function nextNumberPush(currentNumber, numberArray) {
+    if (numberArray.includes(currentNumber)) {
+        currentNumber++;
+        numberArray.push(currentNumber)
+    }
+    return currentNumber
+}
+
+/**
+ * Description // Genera un numero random
+ * @returns {any}
+ */
+function randomNumber() {
+    const newRandomNumber = Math.floor(Math.random() * 100);
+    return newRandomNumber
+}
